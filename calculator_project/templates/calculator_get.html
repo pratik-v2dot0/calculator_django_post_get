@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator (GET)</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    *{
+        font-family: 'Roboto', sans-serif;    }
+    .main{
+        display: flex;
+        flex-direction : column;
+        width : 200px;
+        margin : auto;
+        margin-top: 30px
+    }
+    h1{
+        text-align : center;
+    }
+    .container{
+        display: flex;
+        flex-direction : column;
+        background-color: black;
+        color:white;
+        width: 300px;
+        border-radius:20px;
+    }
+    form{
+        display: flex;
+        flex-direction : column;
+        width : 200px;
+        margin : auto;
+    }
+
+    button{
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .homebutton{
+        background-color:red;
+        color:black;
+        margin-top: 80px;
+ }
+ p{
+    margin : auto;
+    margin-top : 30px;
+    margin-bottom : 30px;
+    font-size : 30px;
+    background-color:white;
+    color: black;
+
+ }
+ .result{
+    margin : auto;
+    font-size : 20px;
+    background-color:black;
+    color: white;
+ }
+</style>
+<body>
+    <div class="main">
+    <div class="container">
+    <h1>Calculator (GET)</h1>
+    <form method="get">
+        {% if result %}
+        <p class="result">Result</p>
+        <p>{{ result }}</p>
+    {% endif %}
+        <label for="num1">Enter first number:</label>
+        <input type="text" name="num1" id="num1" value="{{ num1 }}" required>
+        <br>
+        <label for="num2">Enter second number:</label>
+        <input type="text" name="num2" id="num2" value="{{ num2 }}" required>
+        <br>
+        <label for="operator">Select operation:</label>
+        <select name="operator" id="operator">
+            <option value="+" {% if operator == '+' %}selected{% endif %}>Add</option>
+            <option value="-" {% if operator == '-' %}selected{% endif %}>Subtract</option>
+            <option value="*" {% if operator == '*' %}selected{% endif %}>Multiply</option>
+            <option value="/" {% if operator == '/' %}selected{% endif %}>Divide</option>
+        </select>
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+
+</div>
+    <a href="/"><button class="homebutton">BACK TO HOME</button></a>
+</div>
+</body>
+</html>

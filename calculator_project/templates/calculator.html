@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Calculator</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    .main{
+        display: flex;
+        flex-direction : column;
+        width : 200px;
+        margin : auto;
+        margin-top: 30px
+    }
+    *{
+        font-family: 'Roboto', sans-serif;    }
+    h1{
+        text-align : center;
+    }
+    .container{
+        display: flex;
+        flex-direction : column;
+        background-color: black;
+        border-radius:20px;
+        color:white;
+        width: 300px;
+    }
+    form{
+        display: flex;
+        flex-direction : column;
+        width : 200px;
+        margin : auto;
+        gap : 8px;
+
+    }
+
+    button{
+       background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+
+    }
+    .homebutton{
+        background-color:red;
+        color:black;
+        margin-top: 80px;
+ }
+ p{
+    margin : auto;
+    margin-top : 30px;
+    margin-bottom : 30px;
+    font-size : 30px;
+    background-color:white;
+    color: black;
+ }
+ .result{
+    margin : auto;
+    font-size : 20px;
+    background-color:black;
+    color: white;
+ }
+</style>
+<body>
+    <div class="main">
+    <div class="container">
+    <h1>Calculator (POST)</h1>
+    {% if result %}
+    <p class="result">Result</p>
+    <p>{{ result }}</p>
+{% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Calculate</button>
+    </form>
+</div>
+<a href="/"><button class="homebutton">BACK TO HOME</button></a>
+</div>
+</body>
+</html>
